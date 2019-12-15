@@ -70,11 +70,11 @@
         <hr>
         {% for blog in blogs.all %}
           <a href="#"><h4>{{blog.title}}</h4></a>
-          {{blog.create_date}}
+          {{blog.date_convertor}}
           <br>
           <img src="{{blog.image.url}}" alt="blog-image" class="img-fluid" width="300" height="400">
           <br>
-          <p >{{blog.body}}</p>
+          <p >{{blog.summary}}</p>
           <hr>
         {% endfor %}
           
