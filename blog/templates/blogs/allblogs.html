@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    {% load staticfiles %}
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -12,7 +13,7 @@
       content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
     />
     <meta name="generator" content="Jekyll v3.8.6" />
-    <title>PortFolio</title>
+    <title>Mohammad's Blogs</title>
 
     <!-- Bootstrap core CSS -->
     <link
@@ -47,17 +48,17 @@
   <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Mohammd Reza</a>
+  <a class="navbar-brand" href="{% url 'home' %}">Mohammd Reza</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav ml-auto">
-      <a class="nav-item nav-link " href="#">Home </span></a>
+      <a class="nav-item nav-link " href="{% url 'home' %}">Home </span></a>
       <a class="nav-item nav-link" href="#">Twitter</a>
-      <a class="nav-item nav-link" href="#">Resume</a>
-      <a class="nav-item nav-link active " href="#" >Blog</a>
+      <a class="nav-item nav-link" href="{% static 'algorithms-art.pdf' %}">Resume</a>
+      <a class="nav-item nav-link active" href="#" >Blog</a>
     </div>
   </div>
 </nav>
@@ -69,7 +70,7 @@
         <h4>Latest Post</h4>
         <hr>
         {% for blog in blogs.all %}
-          <a href="#"><h4>{{blog.title}}</h4></a>
+          <a href="{% url 'details' blog.id%}"><h4>{{blog.title}}</h4></a>
           {{blog.date_convertor}}
           <br>
           <img src="{{blog.image.url}}" alt="blog-image" class="img-fluid" width="300" height="400">
@@ -81,9 +82,11 @@
       </div>
     </main>
     <br>
-    <footer class="text-muted">
-      <div class="container text-center">
-        © Mohammad Reza Jafari Chashmi {% now 'Y' %}
+    <footer>
+      <div class="card text-center bg-secondary  ">
+          <div class="card-body">
+              <p class="card-text text-light">© Mohammad Reza Jafari Chashmi {% now 'Y' %}</p>
+          </div>
       </div>
     </footer>
     <script

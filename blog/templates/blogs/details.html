@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    {% load  staticfiles %}
+    {% load staticfiles %}
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -13,7 +13,7 @@
       content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
     />
     <meta name="generator" content="Jekyll v3.8.6" />
-    <title>Mohammad Reza</title>
+    <title>{{blog.title}}</title>
 
     <!-- Bootstrap core CSS -->
     <link
@@ -55,55 +55,29 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav ml-auto">
-      <a class="nav-item nav-link active" href="#">Home </span></a>
+      <a class="nav-item nav-link " href="{% url 'home' %}">Home </span></a>
       <a class="nav-item nav-link" href="#">Twitter</a>
       <a class="nav-item nav-link" href="{% static 'algorithms-art.pdf' %}">Resume</a>
-      <a class="nav-item nav-link " href="{% url 'allblogs' %}" >Blog</a>
+      <a class="nav-item nav-link active" href="{% url 'allblogs' %}" >Blog</a>
     </div>
   </div>
 </nav>
     </header>
 
     <main role="main">
-      <section class="jumbotron text-center">
-        <div class="container">
-          <h1>سلام ، من محمدرضا هستم </h1>
-          <p class="lead text-muted">
-            hey, My name is Mohammd Reza Jafari and i love programming ...! 
-          </p>
-          <p>
-            <a href="mailto: chashm98@gmail.com" class="btn btn-outline-success my-2" target="_blank">Contact</a>
-          </p>
-          <img src="{% static '86518.png' %}" style="height: 300px;" class="img-fluid">
-        </div>
-      </section>
-
-      <div class="album py-5 bg-light">
-        <div class="container">
-         
-          <div class="row">
-            
-           {% for job in jobs.all %}
-
-              <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <img  src="{{job.image.url}}" style="width: 350px;height:300px"  alt="job image">
-                <div class="card-body">
-                  <p class="card-text">
-                    {{job.summary}}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-           {% endfor %}
-
-          </div>
-
-        </div>
+      <div class="container">
+        <h3 class="text-center pt-4">{{blog.title}}</h3>
+        <p class="text-center">{{blog.create_date}}</p>
+        <hr>
+          <br>
+          <img src="{{blog.image.url}}" alt="blog-image" class="img-fluid col-md-10 offset-1" style="height: 600px;">
+          <br>
+          <br>
+          <p class=" col-md-10 offset-1">{{blog.body}}</p>\
+          
       </div>
     </main>
-
+    <br>
     <footer>
       <div class="card text-center bg-secondary  ">
           <div class="card-body">
